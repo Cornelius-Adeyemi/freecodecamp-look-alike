@@ -1,0 +1,175 @@
+.app-div{
+ margin-left: -8px;
+  margin-top:-10px;
+  margin-right: -8px;
+  margin-bottom: -100px;
+
+  background-color: rgba(248, 238, 248, 0.973);
+}
+
+.link{
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.nav{
+  padding: 0;
+  background-color: black;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  
+}
+
+.nav-div{
+ margin:0;
+ 
+
+
+}
+
+.menu-div{
+  color: white;
+  background-color: black;
+  width: 200px;
+  font-size: 18px;
+  position: fixed;
+  right: 0;
+  padding-left: 5px;
+}
+
+.nav ul{
+  list-style: none;
+  margin: 0;
+  
+  height: 40px;
+ 
+}
+
+li{
+  cursor: pointer;
+}
+
+.menu{
+
+ background-color: black;
+ float: right;
+ padding: 5px 10px;
+ font-size: 20px;
+ color: white;
+ text-align: center;
+ margin-right: 10px;
+ border: 1px solid white;
+ margin-top: 2.5px;
+
+}
+
+
+.icon{
+  width:auto;
+  height: 40px;
+  display: inline-block;
+  
+}
+
+.first-div{
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding-top: 30px;
+
+}
+
+.first-div > p{
+  margin: auto;
+  font-size: 25px;
+  max-width: 800px;
+  
+  text-align: center;
+}
+
+.for-flex{
+  display:flex;
+  justify-content: space-around;
+  max-width: 800px;
+  
+  margin: auto;
+}
+.get-started{
+  display: block;
+ width: 400px;
+ height: 45px;
+ margin: 40px auto;
+ font-size: 20px;
+ background-color: rgb(233, 179, 78);
+ border: 3px solid rgb(240, 162, 18);
+ letter-spacing: 4px;
+}
+
+.img-div{
+  max-width: 800px;
+  height:800px;
+  margin: auto;
+ 
+}
+.alone-img{
+  width:100%;
+}
+
+.img-caption{
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+}
+
+.first-section{
+  margin-top: -200px;
+  background-color: rgba(36, 34, 34, 0.836);
+  text-align: center;
+  color: white;
+  padding: 20px 0;
+
+
+}
+
+.first-section p{
+  font-size: 20px;
+}
+
+.alumni{
+  display: flex;
+  width: 80%;
+  margin: auto;
+  background-color: white;
+  margin-bottom: 50px;
+
+}
+
+.alumni-img-div{
+
+ 
+  
+}
+
+.alumni-text-div{
+  
+
+}
+
+.alumni-img-div img{
+  width:350px;
+  height: 100%;
+  
+  
+}
+
+.alumni-section{
+  
+  text-align: center;
+}
+
+
+.alumni-section h1{
+  margin:60px
+}

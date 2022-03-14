@@ -11,7 +11,7 @@ export default function LoginPage(props){
 
     const context = useContext(detailProvider);
     const navigate = useNavigate();
-    console.log(context);
+    
 
     function validate(event){
         if(context.handleSubmit(event)){

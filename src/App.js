@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './App.css';
 import amazon from "./image/amazon.svg"
@@ -66,7 +66,7 @@ function Nav(props){
 
   const information = useContext(detailProvider);
   
-  console.log(information.state);
+ 
 
   return (<div className='nav-div'><nav className='nav'>
     <ul>
@@ -89,7 +89,16 @@ function Nav(props){
 function HomePage(props){
 
   const information = useContext(detailProvider);
+  useEffect(()=>{
+   
+    document.addEventListener("click", information.menuChanger)
+    return ()=>{
+      document.removeEventListener("click",information.menuChanger)
+    }
+  },[information.state.menu])
 
+  
+   console.log("inside homepage")
   return(<div><div className='first-div'>
 
      {information.state.login && <h2>Welcome {information.state.firstName}!</h2>}

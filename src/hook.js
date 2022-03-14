@@ -17,9 +17,20 @@ function useProvider(){
             setState({...state,email:event.target.value});
         }
     };
+    
+    const menuChanger = ()=>{
+
+        console.log("inside here")
+        if(state.menu===true){
+            console.log("inside the if")
+        setState({...state,menu:false})
+        }
+    }
 
     const handleMenu = ()=>{
         setState({...state,menu:!state.menu});
+       
+
     };
 
     const handleSubmit = (event)=>{
@@ -38,10 +49,10 @@ function useProvider(){
     }
 
     const handleLogout = ()=>{
-        setState({...state,login:false});
+        setState({...state,login:false,firstName:null,lastName:null, email:null });
     }
 
- return {state, handleChange, handleMenu,handleSubmit, handleLogout}
+ return {state, handleChange, handleMenu,handleSubmit, handleLogout,menuChanger}
 }
 
 

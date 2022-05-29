@@ -1,41 +1,81 @@
-h2{
-    text-align: center;
-  
-}
+
 
 .login-div{
     padding-top: 60px;
+    
+}
+
+.login-header{
+
+    text-align: center;
+  
+
+ 
 }
 
 form{
-    padding-left: 200px;
+   
     display: block;
     margin: auto;
+    padding: 10px;
     padding-bottom: 5%;
-    width: 50%;
-
+    width: 70%;
+    min-width: 450px;
+ 
+ 
     
 }
 
 label{
     font-size: 20px;
     font-weight: bold;
-    margin-right: 20px;
+    
+   text-align: center;
+  
 }
 
 input{
     height: 20px;
-    width: 60%;
+    width: 350px;
+    display: block;
+    margin: auto;
     
 }
 
+
 button{
-width: 61%;
+width: 350px;
  height: 35px;
  display: block;
  cursor: pointer;
  font-size: 20px;
  background-color: rgb(233, 179, 78);
  border: 3px solid rgb(240, 162, 18);
+
+ margin: auto;
+ 
 }
 
+
+#input-container{
+    
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: auto;
+}
+
+
+
+@media(max-width:800px) {
+    input{
+        width: 80%;
+        min-width:250px;
+    }
+
+    #input-container, button{
+        width: 80%;
+        min-width:250px;
+    }
+}

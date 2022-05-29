@@ -3,6 +3,9 @@ import "./login.css";
 import { useContext } from "react";
 import { detailProvider } from "./hook";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
+
+
 
 
 
@@ -15,6 +18,7 @@ export default function LoginPage(props){
 
     function validate(event){
         if(context.handleSubmit(event)){
+            Cookies.set("login","true")
             navigate("/");
         }else{
             return false;
@@ -26,12 +30,12 @@ export default function LoginPage(props){
 
 
     return (<div className="login-div">
-        <h2>Welcome to freeCodeCamp</h2>
+        <h2 className="login-header">Welcome to freeCodeCamp</h2>
     <form  onSubmit={(event)=>{return(validate(event))}}>
-     <label>Firstname:</label><br/><input name="firstName" onChange={context.handleChange} placeholder="Firstname" type="text"/><br/>
-     <label>Lastname:</label><br/><input name="lastName" onChange={context.handleChange} placeholder="Lastname" type="text"/> <br/>
-     <label>Email:</label><br/><input onChange={context.handleChange} name="email" placeholder="Email" type="email"/><br/><br/>
-     <button type="submit">Submit</button>
+   <div id="input-container">  <label>Firstname:</label><br/><input name="firstName" onChange={context.handleChange} placeholder="Firstname" type="text"/><br/></div>
+   <div id="input-container"> <label>Lastname:</label><br/><input name="lastName" onChange={context.handleChange} placeholder="Lastname" type="text"/> <br/></div>
+   <div id="input-container">  <label>Email:</label><br/><input onChange={context.handleChange} name="email" placeholder="Email" type="email"/><br/><br/></div>
+   <div id="input-container"> <button type="submit">Submit</button> </div>
 
     </form>
      

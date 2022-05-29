@@ -70,6 +70,7 @@ li{
   width:auto;
   height: 40px;
   display: inline-block;
+  padding: 5px 20px;
   
 }
 
@@ -78,6 +79,8 @@ li{
   margin: auto;
   text-align: center;
   padding-top: 30px;
+ 
+  height: auto;
 
 }
 
@@ -93,12 +96,14 @@ li{
   display:flex;
   justify-content: space-around;
   max-width: 800px;
-  
+  flex-wrap: wrap;
   margin: auto;
 }
 .get-started{
   display: block;
- width: 400px;
+
+ min-width: 50%;
+ width: 300px;
  height: 45px;
  margin: 40px auto;
  font-size: 20px;
@@ -109,10 +114,19 @@ li{
 
 .img-div{
   max-width: 800px;
-  height:800px;
+ 
   margin: auto;
+  margin-bottom: 20px;
+
  
 }
+
+@media(max-width:1200px){
+  .img-div{
+    display: none;
+  }
+}
+
 .alone-img{
   width:100%;
 }
@@ -124,7 +138,7 @@ li{
 }
 
 .first-section{
-  margin-top: -200px;
+  margin-top: 0;
   background-color: rgba(36, 34, 34, 0.836);
   text-align: center;
   color: white;
@@ -146,16 +160,25 @@ li{
 
 }
 
-.alumni-img-div{
+@media(max-width:995px){
 
- 
-  
+  .alumni{
+    width: 350px;
+  }
+
+  .alumni{
+    flex-direction: column;
+  }
+
+
+  .alumni-text-div{
+
+    
+    margin: auto;
+  }
+
 }
 
-.alumni-text-div{
-  
-
-}
 
 .alumni-img-div img{
   width:350px;
@@ -172,4 +195,10 @@ li{
 
 .alumni-section h1{
   margin:60px
+}
+
+
+#name{
+  text-align: center;
+  
 }

@@ -1,10 +1,29 @@
-import React, { useContext, createContext, useState } from "react";
+import React, {  createContext, useState } from "react";
+import Cookies from 'js-cookie';
+
 
 const defaultState= {firstName:null,lastName:null, email:null, menu:false,login:false}
 
 
 function useProvider(){
     const [state, setState] = useState(defaultState);
+
+    const logToState = (value)=>{
+
+        setState({...state,firstName:value.firstName,lastName:value.lastName,email:value.email,login:true})
+    }
+    
+    const setStore = (theStore)=>{
+
+    if(!localStorage.getItem("detail")){
+     localStorage.setItem("detail",JSON.stringify(theStore))
+    }
+    }
+    
+    const clearCookiesLocal = ()=>{
+        Cookies.remove("login");
+        localStorage.removeItem("detail");
+    }
     
 
     const handleChange = (event)=>{
@@ -35,6 +54,8 @@ function useProvider(){
 
     const handleSubmit = (event)=>{
         if(state.firstName && state.lastName && state.email ){
+        let store = {firstName:state.firstName, lastName:state.lastName, email:state.email}
+                setStore(store);  
         setState({...state,login:true});
 
         event.preventDefault();
@@ -50,9 +71,10 @@ function useProvider(){
 
     const handleLogout = ()=>{
         setState({...state,login:false,firstName:null,lastName:null, email:null });
+        clearCookiesLocal();
     }
 
- return {state, handleChange, handleMenu,handleSubmit, handleLogout,menuChanger}
+ return {state, logToState, handleChange, handleMenu,handleSubmit, handleLogout,menuChanger}
 }
 
 

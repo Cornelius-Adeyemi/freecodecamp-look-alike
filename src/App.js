@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './App.css';
 import amazon from "./image/amazon.svg"
@@ -10,17 +10,16 @@ import team from "./image/team.jpg"
 import Bisi from "./image/Bisi.jpg"
 import Footer from './footer';
 import {detailProvider, TheAuto} from './hook';
-import { useContext, createContext } from "react";
+import { useContext } from "react";
 import LoginPage from './login';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
-  useNavigate,
-  useLocation
+  
 } from "react-router-dom";
-
+import Cookies from 'js-cookie'
 
 
 // function reducer(state, action) {
@@ -89,19 +88,27 @@ function Nav(props){
 function HomePage(props){
 
   const information = useContext(detailProvider);
+
+  
+
+  
+
   useEffect(()=>{
-   
+  
     document.addEventListener("click", information.menuChanger)
     return ()=>{
       document.removeEventListener("click",information.menuChanger)
     }
-  },[information.state.menu])
+
+    
+  },[information.state.menu,information.state.login])
 
   
-   console.log("inside homepage")
-  return(<div><div className='first-div'>
+   
+  return(<div>
+    <div className='first-div'>
 
-     {information.state.login && <h2>Welcome {information.state.firstName}!</h2>}
+     {information.state.login && <h2 id='name'>Welcome {information.state.firstName}!</h2>}
     <h1>Learn to code — for free.</h1>
     <h1>Build projects.</h1>
     <h1>Earn certifications.</h1>
@@ -111,7 +118,7 @@ function HomePage(props){
     <div className='for-flex'> <img className='icon' src={apple} alt=''/> <img className='icon' src={google} alt=''/> <img className='icon' src={microsoft} alt=''/>
      <img className='icon' src={spotify} alt=''/> <img className='icon' src={amazon} alt=''/> </div>
      <button className='get-started'> Get Started (it's free)</button>
-     <div className='img-div'><img className='alone-img' src={team} />
+     <div className='img-div'><img className='alone-img' src={team} alt=" " />
      <p className='img-caption'>freeCodeCamp students at a local study group in South Korea.</p></div>
      
     </div>
@@ -128,13 +135,13 @@ function HomePage(props){
     </section>
     <section className='alumni-section'>
       <h1>Here is what our alumni say about freeCodeCamp:</h1>
-      <div className='alumni'><div className='alumni-img-div'><img src={Bisi}/></div><div className='alumni-text-div'><h3>Shawn Wang in Singapore</h3>
+      <div className='alumni'><div className='alumni-img-div'><img src={Bisi} alt=""/></div><div className='alumni-text-div'><h3>Shawn Wang in Singapore</h3>
       <h3>Software Engineer at Amazon</h3><p>"It's scary to change careers. I only gained confidence that I could code by working through the hundreds of hours of free lessons on freeCodeCamp. Within a year I had a
          six-figure job as a Software Engineer. freeCodeCamp changed my life."</p></div></div>
-      <div className='alumni'><div className='alumni-img-div'><img src={Bisi}/></div><div className='alumni-text-div'><h3>Sarah Chima in Nigeria</h3><h3>Software Engineer at ChatDesk</h3>
+      <div className='alumni'><div className='alumni-img-div'><img src={Bisi} alt=""/></div><div className='alumni-text-div'><h3>Sarah Chima in Nigeria</h3><h3>Software Engineer at ChatDesk</h3>
       <p>"freeCodeCamp was the gateway to my career as a software developer. The well-structured curriculum took my coding knowledge from a total beginner level
          to a very confident level. It was everything I needed to land my first dev job at an amazing company."</p></div></div>
-      <div className='alumni'><div className='alumni-img-div'><img src={Bisi}/></div><div className='alumni-text-div'><h3>Emma Bostian in Sweden</h3><h3>Software Engineer at Spotify</h3>
+      <div className='alumni'><div className='alumni-img-div'><img src={Bisi} alt=""/></div><div className='alumni-text-div'><h3>Emma Bostian in Sweden</h3><h3>Software Engineer at Spotify</h3>
       <p>"I've always struggled with learning JavaScript. I've taken many courses but freeCodeCamp's course was the one which stuck. Studying JavaScript as well
          as data structures and algorithms on freeCodeCamp gave me the skills and confidence I needed to land my dream job as a software engineer at Spotify."</p></div></div>
     </section>
@@ -144,6 +151,35 @@ function HomePage(props){
 
 
 
+function Routing(props){
+    let contextValue = useContext(detailProvider)
+     
+    const authLogin= ()=>{
+    //  let cookiesValue = Cookies.get("login")
+      
+      
+      if(Cookies.get("login")){
+        let detailStore = JSON.parse(localStorage.getItem("detail"));
+        console.log("i'm here");
+        contextValue.logToState(detailStore);
+      }
+    }
+
+    useEffect(()=>{
+      authLogin();
+    },[])
+   
+    return(
+    <Router>
+    <Nav/>
+    <Routes>
+      <Route exact path="/" element={<HomePage/>}/>
+      <Route path="/login"  element={(contextValue.state.login) ? <Navigate to="/"/>: <LoginPage/>}/>
+   </Routes>
+  <Footer/>
+  </Router>
+  )
+}
 
 
 
@@ -152,14 +188,7 @@ function HomePage(props){
 export default function App(){
   return (<div className='app-div'> 
   <TheAuto>
-  <Router>
-    <Nav/>
-    <Routes>
-      <Route exact path="/" element={<HomePage/>}/>
-   <Route path="/login" element={<LoginPage/>}/>
-   </Routes>
-  <Footer/>
-  </Router>
+   <Routing/>
   </TheAuto>
   </div>)
 }

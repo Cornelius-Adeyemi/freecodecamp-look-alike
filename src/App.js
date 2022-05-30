@@ -93,6 +93,8 @@ function HomePage(props){
 
   
 
+
+  // eslint-disable-next-line
   useEffect(()=>{
   
     document.addEventListener("click", information.menuChanger)
@@ -100,10 +102,9 @@ function HomePage(props){
       document.removeEventListener("click",information.menuChanger)
     }
 
-    
+  // eslint-disable-next-line  
   },[information.state.menu,information.state.login])
 
-  
    
   return(<div>
     <div className='first-div'>
@@ -167,6 +168,7 @@ function Routing(props){
 
     useEffect(()=>{
       authLogin();
+      // eslint-disable-next-line
     },[])
    
     return(
